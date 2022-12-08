@@ -1,0 +1,127 @@
+package lab3;
+import java.util.Scanner;  // Import the Scanner class
+import java.util.Random; //Import RandomNumber
+import java.util.ArrayList; // import the ArrayList class
+
+public class lab3 {
+	
+	public static void lab3_1() {
+		int MaxNumber ;
+        int RandomNumber ;
+        int count = 0 ;
+
+   //---------------------class Import-----------------------------------------//
+
+        Random rand = new Random(); //instance of random class
+        ArrayList<Integer> myNumbers = new ArrayList<Integer>();//สร้างตัวแปรเก็บค่า ArrayList
+   //---------------------End class Import-----------------------------------------//
+
+        System.out.print("Please enter your random value : ");
+        Scanner n = new Scanner(System.in);  // Create a Scanner object
+        MaxNumber = n.nextInt();  // เก็บค่าสูงสุดที่ผู้ใช้กรอกมา
+
+
+
+        RandomNumber = rand.nextInt(MaxNumber); //เก็บค่าตัวเลขที่สุ่มมา
+        System.out.println("-----------------------");
+
+        if(MaxNumber > 0 && MaxNumber < 100) {
+            for(int i=0; i <= MaxNumber; i++) {
+                RandomNumber = rand.nextInt(MaxNumber); //เก็บค่าตัวเลขที่สุ่มมา
+                myNumbers.add(RandomNumber);
+            }// End forLoop
+
+            for(int j: myNumbers ) {
+                System.out.println("Array["+count+"]"+" = " + j);
+                count++ ;
+            }// End forLoop
+        }else {
+            System.out.println("Please Enter Number 0-99");
+        }//End if
+
+	} // End lab2_2
+	
+	public static void lab3_2() {
+		int StackSize ;
+    	boolean Jong = true ;
+    	String StackDirective ;
+    	String PushData ;
+    	String Topp = "Null" ;
+    	int count = 0 ;
+    	int countJong = 0;
+    	String isEmpty = "isEmpty" ;  
+    	String Push = "Push" ; 
+    	String Pop = "Pop" ; 
+    	String Top = "Top" ; 
+    	String CheckStack = "CheckStack" ; 
+    	
+        //--------------------------------------------------------------------------------//
+        Scanner mySC = new Scanner(System.in); //ประกาศการใช้ class scaner
+        ArrayList<String> StackData = new ArrayList<String>();
+        //--------------------------------------------------------------------------------//
+        System.out.print("SetStackSize : ");
+        StackSize = mySC.nextInt();
+        System.out.print("SetStackSize(");
+        System.out.println(StackSize+") ");
+        
+      //--------------------------------------Process-------------------------------------//
+        while(Jong) {
+        	countJong = 0 ; //รีเซตตัวนับ Comma
+        	StackDirective = mySC.nextLine();
+            
+        	if(StackDirective.equals(isEmpty) == true ) {
+        		if(count == 0) {
+        		       System.out.println("---|Yes");
+        		}else {
+        		       System.out.println("---|No");
+        		}
+        	}//End if isEmptyDirective
+        	
+        	if(StackDirective.equals(Push) == true ) {
+ 		        System.out.print("Push : ");
+ 		        PushData = mySC.nextLine();
+        		StackData.add(PushData);
+        		Topp = PushData ;
+        		count ++ ;
+        	}//End if PushDirective
+        	
+        	if(StackDirective.equals(CheckStack) == true ) {
+ 		        System.out.print("---|Stack : ");
+        	    for (String i : StackData ) {
+        	        countJong ++ ;
+        	        System.out.print(i);
+        	        if(count > 1 && countJong < count) {
+            	        System.out.print(", ");
+        	        }
+
+        	      }
+ 		        //System.out.print(" /---count = "+count+"---/");
+ 		        System.out.println("");
+        	}//End if CheckStackDirective
+        	
+        	if(StackDirective.equals(Pop) == true ) {
+ 		        System.out.println("Pop : IsWork ");
+        		StackData.remove(count-1);
+        		count -- ;
+        	}//End if PopDirective
+        	
+        	if(StackDirective.equals(Top) == true ) { 
+        		System.out.print("--|");
+        		System.out.println(Topp);
+        	}//End if TopDirective
+        	
+        	if(StackDirective.equals("Break") == true ) {
+        		System.out.println("End Program....");
+        		Jong = false ;
+        	}//End Condition Exit to Loop
+        	
+        }
+	}
+
+    public static void main(String[] args) {
+        //lab3_1();
+    	lab3_2();
+    	
+    }//END Void main
+
+}
