@@ -2,7 +2,7 @@ package lab4;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Arrays;
-
+import java.util.ArrayList; // import the ArrayList class
 public class MyArray {
 	
 	int MyArray[] = new int[10];
